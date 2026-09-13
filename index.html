@@ -1,1 +1,1072 @@
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10th MCQs</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    min-height:100vh;
+    padding:25px;
+    color:#222;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+header{
+    text-align:center;
+    color:white;
+    margin-bottom:25px;
+}
+
+header h1{
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+header p{
+    font-size:17px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    margin-bottom:20px;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+select{
+    width:100%;
+    padding:14px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    font-size:16px;
+    margin-bottom:15px;
+}
+
+button{
+    border:none;
+    padding:13px 22px;
+    border-radius:10px;
+    background:#667eea;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:.9;
+}
+
+.hidden{
+    display:none;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    gap:10px;
+}
+
+.timer{
+    background:#eee;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.progress{
+    height:10px;
+    background:#eee;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:#667eea;
+    transition:.3s;
+}
+
+.question{
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.option{
+    width:100%;
+    text-align:left;
+    background:#f4f4f4;
+    color:#222;
+    margin:8px 0;
+    border:2px solid transparent;
+}
+
+.option:hover{
+    background:#e9e9e9;
+}
+
+.option.correct{
+    background:#d4edda;
+    border-color:#28a745;
+}
+
+.option.wrong{
+    background:#f8d7da;
+    border-color:#dc3545;
+}
+
+.explanation{
+    margin-top:15px;
+    padding:15px;
+    background:#f1f3ff;
+    border-radius:10px;
+    line-height:1.5;
+}
+
+#nextBtn{
+    margin-top:20px;
+}
+
+.result{
+    text-align:center;
+}
+
+.score{
+    font-size:45px;
+    font-weight:bold;
+    margin:15px;
+}
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+.stat{
+    padding:15px 25px;
+    background:#f4f4f4;
+    border-radius:12px;
+}
+
+
+/* TOPPER STRATEGY + FAILURE QUOTE */
+
+.extra-motivation{
+    margin-bottom:25px;
+}
+
+.strategy-box{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    margin-bottom:20px;
+}
+
+.strategy-box h2{
+    color:#5b21b6;
+    margin-bottom:18px;
+}
+
+.strategy-box ol{
+    padding-left:25px;
+}
+
+.strategy-box li{
+    margin:10px 0;
+    line-height:1.5;
+    font-size:15px;
+}
+
+.failure-quote{
+    background:#202020;
+    color:white;
+    border-radius:20px;
+    padding:28px 22px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.quote-mark{
+    font-size:42px;
+    line-height:1;
+    opacity:.6;
+}
+
+.failure-quote p{
+    font-size:18px;
+    line-height:1.6;
+    font-weight:bold;
+    margin:8px 0 12px;
+}
+
+.failure-quote span{
+    font-size:13px;
+    opacity:.7;
+}
+
+
+@media(max-width:600px){
+    body{
+        padding:12px;
+    }
+
+    header h1{
+        font-size:32px;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .question{
+        font-size:18px;
+    }
+
+    .strategy-box{
+        padding:20px;
+    }
+
+    .strategy-box li{
+        font-size:14px;
+    }
+
+    .failure-quote p{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>📚 10th MCQs</h1>
+    <p>Class 10 • Chapter-wise MCQ Practice</p>
+</header>
+
+<!-- START SCREEN -->
+<div class="card" id="startScreen">
+
+    <h2>Select Subject</h2>
+
+    <select id="subjectSelect">
+        <option value="">Choose Subject</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Science">Science</option>
+        <option value="English">English</option>
+        <option value="Social Science">Social Science</option>
+    </select>
+
+    <h2>Select Chapter</h2>
+
+    <select id="chapterSelect">
+        <option value="">Choose Chapter</option>
+    </select>
+
+    <button onclick="startQuiz()">Start Quiz 🚀</button>
+
+</div>
+
+
+<!-- TOPPER STRATEGY + FAILURE QUOTE -->
+<div class="extra-motivation">
+
+    <div class="strategy-box">
+
+        <h2>🏆 Topper Strategy</h2>
+
+        <ol>
+            <li>Study a little every day, but never break your consistency.</li>
+
+            <li>Understand the concept instead of only memorising answers.</li>
+
+            <li>Whenever you get a question wrong, find out exactly where you went wrong.</li>
+
+            <li>Revise important formulas, definitions and key points regularly.</li>
+
+            <li>Try to solve MCQs with logic instead of guessing the answer.</li>
+
+            <li>Identify your weak topics and give them extra practice.</li>
+
+            <li>After every test, analyse your mistakes before starting the next one.</li>
+
+            <li>Practise solving questions within a fixed time to improve time management.</li>
+
+            <li>Don't practise only easy questions; challenge yourself with difficult ones too.</li>
+
+            <li>Compete with your previous performance and keep trying to improve.</li>
+        </ol>
+
+    </div>
+
+
+    <div class="failure-quote">
+
+        <div class="quote-mark">“</div>
+
+        <p>
+            Failure is not the opposite of success.<br>
+            It is part of the journey towards success.
+        </p>
+
+        <span>Learn from it. Try again. Come back stronger.</span>
+
+    </div>
+
+</div>
+
+
+<!-- QUIZ SCREEN -->
+<div class="card hidden" id="quizScreen">
+
+    <div class="topbar">
+        <b id="chapterTitle"></b>
+        <div class="timer">⏱️ <span id="timer">30</span>s</div>
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="questionNumber"></div>
+
+    <div class="question" id="question"></div>
+
+    <div id="options"></div>
+
+    <div id="explanation" class="explanation hidden"></div>
+
+    <button id="nextBtn" class="hidden" onclick="nextQuestion()">
+        Next →
+    </button>
+
+</div>
+
+
+<!-- RESULT SCREEN -->
+<div class="card hidden result" id="resultScreen">
+
+    <h2>🎉 Quiz Completed!</h2>
+
+    <div class="score" id="score"></div>
+
+    <div class="stats">
+        <div class="stat">
+            ✅ Correct: <b id="correctCount"></b>
+        </div>
+
+        <div class="stat">
+            ❌ Wrong: <b id="wrongCount"></b>
+        </div>
+
+        <div class="stat">
+            📋 Total: <b id="totalCount"></b>
+        </div>
+    </div>
+
+    <p id="message"></p>
+
+    <br>
+
+    <button onclick="location.reload()">Try Again 🔄</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   QUESTION BANK
+   Each question:
+   [Question, [Option1, Option2, Option3, Option4], CorrectAnswerIndex, Explanation]
+===================================================== */
+
+const data = {
+
+Mathematics: {
+
+"Real Numbers":[
+
+["Euclid's division lemma is used to find:",["HCF","LCM only","Square root","Probability"],0,"Euclid's division algorithm is commonly used to find the HCF of two positive integers."],
+
+["HCF of 12 and 18 is:",["2","3","6","9"],2,"The common factors are 1, 2, 3 and 6. Therefore HCF = 6."],
+
+["LCM of 4 and 6 is:",["10","12","18","24"],1,"The smallest common multiple of 4 and 6 is 12."],
+
+["Every composite number can be expressed as a product of:",["Prime numbers","Odd numbers","Even numbers","Fractions"],0,"Every composite number can be written as a product of prime numbers."],
+
+["The HCF of two consecutive positive integers is:",["0","1","2","Their sum"],1,"Two consecutive positive integers always have HCF 1."],
+
+["If HCF(a,b)=1, then a and b are called:",["Prime","Co-prime","Composite","Even"],1,"Numbers whose HCF is 1 are called co-prime numbers."],
+
+["2 is a:",["Composite number","Prime number","Odd number","Fraction"],1,"2 is the smallest prime number and the only even prime number."],
+
+["The decimal expansion of 1/2 is:",["Terminating","Non-terminating recurring","Irrational","Undefined"],0,"1/2 = 0.5, which is a terminating decimal."],
+
+["√2 is:",["Rational","Irrational","Integer","Natural"],1,"√2 cannot be expressed as p/q, so it is irrational."],
+
+["The HCF of 15 and 25 is:",["3","5","10","15"],1,"The common factors of 15 and 25 include 5, and the greatest is 5."]
+
+],
+
+"Polynomials":[
+
+["A polynomial of degree 2 is called:",["Linear","Quadratic","Cubic","Constant"],1,"A polynomial of degree 2 is called a quadratic polynomial."],
+
+["The degree of 5x³+2x+1 is:",["1","2","3","4"],2,"The highest power of x is 3."],
+
+["A zero of a polynomial is the value of x for which:",["Polynomial = 1","Polynomial = 0","x = 1","x = 0"],1,"A zero makes the value of the polynomial equal to zero."],
+
+["The graph of a linear polynomial is a:",["Line","Circle","Parabola","Point"],0,"A linear polynomial has a straight-line graph."],
+
+["The degree of a non-zero constant polynomial is:",["0","1","2","Undefined"],0,"A non-zero constant polynomial has degree 0."],
+
+["If p(x)=x-5, its zero is:",["0","5","-5","1"],1,"Putting x=5 gives p(5)=5-5=0."],
+
+["A quadratic polynomial can have at most:",["1 zero","2 zeros","3 zeros","4 zeros"],1,"A polynomial of degree 2 can have at most 2 zeros."],
+
+["The graph of a quadratic polynomial is generally a:",["Straight line","Parabola","Circle","Triangle"],1,"A quadratic polynomial has a parabola as its graph."],
+
+["If α and β are zeros of ax²+bx+c, then α+β equals:",["b/a","-b/a","c/a","-c/a"],1,"The sum of zeros is -b/a."],
+
+["The product of zeros of ax²+bx+c is:",["b/a","-b/a","c/a","-c/a"],2,"The product of zeros is c/a."]
+
+],
+
+"Pair of Linear Equations":[
+
+["A linear equation in two variables has degree:",["1","2","3","4"],0,"A linear equation has degree 1."],
+
+["The graph of a linear equation in two variables is a:",["Circle","Straight line","Parabola","Point"],1,"Every linear equation in two variables represents a straight line."],
+
+["Two intersecting lines have:",["No solution","One solution","Two solutions","Infinite solutions"],1,"Intersecting lines meet at exactly one point."],
+
+["Parallel lines have:",["One solution","No solution","Infinite solutions","Two solutions"],1,"Parallel distinct lines never intersect."],
+
+["Coincident lines have:",["No solution","One solution","Infinite solutions","Two solutions"],2,"Coincident lines overlap completely and have infinitely many solutions."],
+
+["The solution of two equations represents their:",["Common point","Highest point","Lowest point","Slope only"],0,"The common solution is the point satisfying both equations."],
+
+["If two lines intersect, the pair is:",["Consistent","Inconsistent","Undefined","Impossible"],0,"Intersecting lines have one solution, so the pair is consistent."],
+
+["A pair with no solution is called:",["Consistent","Inconsistent","Dependent","Equal"],1,"A pair of parallel lines has no solution and is inconsistent."],
+
+["A pair with infinitely many solutions is:",["Inconsistent","Consistent dependent","Impossible","None"],1,"Coincident lines give infinitely many solutions."],
+
+["The standard form is:",["ax+by+c=0","ax²+b=0","x/y=0","a+b=c"],0,"The standard form of a linear equation in two variables is ax+by+c=0."]
+
+],
+
+"Quadratic Equations":[
+
+["The standard form of a quadratic equation is:",["ax+b=0","ax²+bx+c=0","ax³+bx=0","a/x=0"],1,"A quadratic equation is written as ax²+bx+c=0, where a ≠ 0."],
+
+["The degree of a quadratic equation is:",["1","2","3","4"],1,"The highest power of x is 2."],
+
+["The discriminant of ax²+bx+c=0 is:",["b²+4ac","b²-4ac","4ac-b","a²-b²"],1,"Discriminant D = b² - 4ac."],
+
+["If D > 0, the equation has:",["No real roots","Two distinct real roots","Equal roots","One imaginary root"],1,"A positive discriminant gives two distinct real roots."],
+
+["If D = 0, the roots are:",["Distinct","Equal","Imaginary","None"],1,"When D=0, the quadratic has equal real roots."],
+
+["If D < 0, there are:",["Two real roots","Equal roots","No real roots","Three roots"],2,"A negative discriminant means there are no real roots."],
+
+["The quadratic formula contains:",["b²-4ac","a+b+c","2a+b","abc"],0,"The quadratic formula uses the discriminant b²-4ac."],
+
+["A quadratic equation can have at most:",["1 root","2 roots","3 roots","4 roots"],1,"A quadratic equation has at most two roots."],
+
+["The coefficient of x² in ax²+bx+c is:",["a","b","c","x"],0,"The coefficient of x² is a."],
+
+["If roots are α and β, their sum is:",["-b/a","b/a","c/a","-c/a"],0,"For ax²+bx+c=0, α+β=-b/a."]
+
+],
+
+"Arithmetic Progressions":[
+
+["An arithmetic progression is a sequence with:",["Constant difference","Constant product","Random terms","No pattern"],0,"An AP has the same common difference between consecutive terms."],
+
+["The common difference of 2,5,8,11 is:",["2","3","4","5"],1,"5-2=3 and 8-5=3."],
+
+["The first term of an AP is represented by:",["a","d","n","S"],0,"The first term is represented by a."],
+
+["The common difference is represented by:",["a","d","n","l"],1,"d represents common difference."],
+
+["The nth term of an AP is:",["a+(n-1)d","a+nd","n+d","ad"],0,"The formula is aₙ = a+(n-1)d."],
+
+["The sum of first n terms is represented by:",["Sₙ","aₙ","dₙ","l"],0,"Sₙ represents the sum of the first n terms."],
+
+["In an AP, consecutive terms differ by:",["d","a","n","S"],0,"The difference between consecutive terms is d."],
+
+["If a=3 and d=2, the second term is:",["3","5","6","7"],1,"Second term = a+d = 3+2 = 5."],
+
+["The 5th term of 2,4,6,8,... is:",["8","10","12","14"],1,"The terms are 2,4,6,8,10, so the fifth term is 10."],
+
+["An AP can have a common difference that is:",["Only positive","Only negative","Positive, negative or zero","Only zero"],2,"The common difference can be positive, negative or zero."]
+
+],
+
+"Triangles":[
+
+["Two triangles are congruent when they have:",["Same shape only","Same size only","Same shape and size","Different size"],2,"Congruent figures have the same shape and the same size."],
+
+["SSS stands for:",["Side Side Side","Same Side Side","Side Sum Side","Square Side Side"],0,"SSS means Side-Side-Side congruence criterion."],
+
+["SAS stands for:",["Side Angle Side","Side Area Side","Same Angle Side","Side Arc Side"],0,"SAS means Side-Angle-Side."],
+
+["ASA stands for:",["Angle Side Angle","Area Side Area","Angle Sum Angle","None"],0,"ASA means Angle-Side-Angle."],
+
+["RHS is used for:",["Any triangles","Right-angled triangles","Equilateral triangles","Scalene triangles"],1,"RHS congruence applies to right-angled triangles."],
+
+["CPCT stands for:",["Corresponding Parts of Congruent Triangles","Common Parts of Circles","Correct Parts","None"],0,"CPCT means Corresponding Parts of Congruent Triangles."],
+
+["If two triangles are congruent, their corresponding sides are:",["Unequal","Equal","Parallel","Perpendicular"],1,"Corresponding sides of congruent triangles are equal."],
+
+["The longest side of a right triangle is called:",["Base","Height","Hypotenuse","Median"],2,"The side opposite the right angle is the hypotenuse."],
+
+["The Pythagoras theorem applies to:",["Right triangles","All triangles","Only equilateral triangles","Circles"],0,"Pythagoras theorem is used for right-angled triangles."],
+
+["If two angles of a triangle are equal, the opposite sides are:",["Unequal","Equal","Parallel","Zero"],1,"Equal angles have equal opposite sides."]
+
+]
+
+},
+
+
+Science:{
+
+"Chemical Reactions":[
+["A chemical reaction produces:",["New substances","Only water","Only heat","No change"],0,"Chemical reactions form one or more new substances."],
+["Rusting of iron is a:",["Physical change","Chemical reaction","Nuclear reaction","None"],1,"Rusting forms a new substance, iron oxide."],
+["A reaction in which heat is released is:",["Endothermic","Exothermic","Neutral","Physical"],1,"Exothermic reactions release heat."],
+["A reaction in which heat is absorbed is:",["Exothermic","Endothermic","Neutral","None"],1,"Endothermic reactions absorb heat."],
+["Oxidation involves:",["Addition of oxygen","Removal of oxygen only","Addition of water only","None"],0,"Oxidation can involve addition of oxygen."],
+["Reduction involves:",["Addition of oxygen","Removal of oxygen","Addition of nitrogen","None"],1,"Reduction can involve removal of oxygen."],
+["A balanced equation obeys:",["Law of conservation of mass","Law of gravity","Ohm's law","Newton's law"],0,"Atoms are neither created nor destroyed in a chemical reaction."],
+["2H₂ + O₂ →:",["H₂O","2H₂O","H₂O₂","OH"],1,"The balanced equation is 2H₂ + O₂ → 2H₂O."],
+["Corrosion is generally:",["Destruction of metals by chemical reactions","Melting","Freezing","Boiling"],0,"Corrosion is the gradual deterioration of metals due to chemical reactions."],
+["Rancidity is caused mainly by:",["Oxidation of fats and oils","Freezing","Boiling","Condensation"],0,"Oxidation of fats and oils causes rancidity."]
+],
+
+"Acids Bases and Salts":[
+["Acids generally have pH:",["Less than 7","Equal to 7","Greater than 7","14 only"],0,"Acidic solutions have pH below 7."],
+["Bases generally have pH:",["Less than 7","7","Greater than 7","0"],2,"Basic solutions have pH above 7."],
+["A neutral solution has pH:",["0","5","7","14"],2,"Pure water is neutral with pH 7 at standard conditions."],
+["HCl is a:",["Base","Acid","Salt","Metal"],1,"Hydrochloric acid is HCl."],
+["NaOH is a:",["Acid","Base","Salt","Metal"],1,"Sodium hydroxide is a strong base."],
+["Acid turns blue litmus:",["Blue","Red","Green","Yellow"],1,"Acids turn blue litmus red."],
+["Base turns red litmus:",["Blue","Red","Green","Yellow"],0,"Bases turn red litmus blue."],
+["Common salt formula is:",["NaCl","HCl","NaOH","CaCO₃"],0,"Common salt is sodium chloride, NaCl."],
+["Baking soda formula is:",["NaCl","NaHCO₃","NaOH","HCl"],1,"Baking soda is sodium hydrogen carbonate, NaHCO₃."],
+["A neutralisation reaction occurs between:",["Acid and base","Metal and metal","Salt and salt","Water and water"],0,"Acid + base gives salt and water."]
+],
+
+"Metals and Non-metals":[
+["Metals are generally:",["Good conductors","Poor conductors","Gases","Brittle"],0,"Most metals conduct heat and electricity well."],
+["Non-metals are generally:",["Good conductors","Poor conductors","Malleable","Ductile"],1,"Most non-metals are poor conductors."],
+["The most reactive metal among these is:",["Gold","Potassium","Silver","Copper"],1,"Potassium is highly reactive."],
+["Iron reacts with oxygen and water to form:",["Rust","Salt","Sugar","Carbon"],0,"Rust is hydrated iron(III) oxide."],
+["Metals can generally be beaten into sheets because they are:",["Malleable","Ductile","Brittle","Soft only"],0,"Malleability is the ability to be beaten into thin sheets."],
+["Metals can be drawn into wires because they are:",["Ductile","Malleable","Brittle","Non-reactive"],0,"Ductility is the ability to be drawn into wires."],
+["Gold is:",["Highly reactive","Very unreactive","A gas","A non-metal"],1,"Gold is a relatively unreactive metal."],
+["Copper is commonly used in:",["Electrical wires","Food only","Glass","Wood"],0,"Copper is a good electrical conductor."],
+["The ore from which aluminium is extracted is:",["Bauxite","Hematite","Galena","Cinnabar"],0,"Bauxite is the chief ore of aluminium."],
+["An alloy is:",["A mixture of metals or a metal with another element","A pure metal","Only a gas","Only a non-metal"],0,"Alloys are mixtures of elements with metallic properties."]
+],
+
+"Carbon Compounds":[
+["The valency of carbon is:",["1","2","3","4"],3,"Carbon is tetravalent and usually forms four covalent bonds."],
+["The simplest alkane is:",["Methane","Ethane","Propane","Butane"],0,"Methane (CH₄) is the simplest alkane."],
+["Formula of methane is:",["CH₄","C₂H₆","C₃H₈","CH₃OH"],0,"Methane has one carbon and four hydrogen atoms."],
+["Alkanes contain:",["Single bonds","Double bonds only","Triple bonds only","No bonds"],0,"Alkanes are saturated hydrocarbons containing single bonds."],
+["Alkenes contain at least one:",["Single bond","Double bond","Triple bond","Ionic bond"],1,"Alkenes contain a carbon-carbon double bond."],
+["Ethene formula is:",["C₂H₆","C₂H₄","C₂H₂","CH₄"],1,"Ethene has formula C₂H₄."],
+["Ethanol formula is:",["CH₃COOH","C₂H₅OH","CH₄","C₂H₆"],1,"Ethanol is C₂H₅OH."],
+["Ethanoic acid is commonly called:",["Acetic acid","Sulfuric acid","Hydrochloric acid","Nitric acid"],0,"Ethanoic acid is commonly known as acetic acid."],
+["A homologous series has compounds with the same:",["Functional group","Mass only","Colour","Boiling point"],0,"Members of a homologous series have the same functional group."],
+["Soap molecules have:",["Hydrophilic and hydrophobic parts","Only water","Only oil","No structure"],0,"Soap has a water-attracting end and a water-repelling hydrocarbon tail."]
+],
+
+"Life Processes":[
+["Photosynthesis occurs mainly in:",["Leaves","Roots","Flowers only","Seeds only"],0,"Leaves contain chlorophyll and are the main site of photosynthesis."],
+["The green pigment in plants is:",["Haemoglobin","Chlorophyll","Insulin","Keratin"],1,"Chlorophyll absorbs light energy."],
+["Respiration releases:",["Energy","Only water","Only oxygen","No energy"],0,"Respiration releases energy from food."],
+["The main organ of the human respiratory system is:",["Lungs","Heart","Kidney","Stomach"],0,"The lungs are the main organs of respiration."],
+["Blood is pumped by the:",["Heart","Lungs","Kidney","Brain"],0,"The heart pumps blood throughout the body."],
+["The functional unit of kidney is:",["Neuron","Nephron","Alveolus","Villus"],1,"The nephron is the structural and functional unit of the kidney."],
+["Digestion of food begins in the:",["Mouth","Stomach","Small intestine","Large intestine"],0,"Digestion begins in the mouth with chewing and saliva."],
+["Most absorption of digested food occurs in:",["Small intestine","Stomach","Large intestine","Mouth"],0,"The small intestine is adapted for absorption of nutrients."],
+["Plants exchange gases mainly through:",["Stomata","Roots only","Flowers","Seeds"],0,"Stomata are tiny pores mainly found on leaves."],
+["The transport of food in plants occurs through:",["Phloem","Xylem","Stomata","Roots"],0,"Phloem transports food made by leaves."]
+],
+
+"Light Reflection and Refraction":[
+["The angle of incidence is measured from:",["Normal","Mirror surface","Object","Image"],0,"Angles of incidence and reflection are measured from the normal."],
+["According to the law of reflection, angle of incidence equals:",["Angle of reflection","Angle of refraction","90°","0°"],0,"The angle of incidence equals the angle of reflection."],
+["A convex lens is also called a:",["Converging lens","Diverging lens","Plane lens","Flat mirror"],0,"A convex lens converges parallel rays."],
+["A concave lens is:",["Converging","Diverging","Plane","Reflecting only"],1,"A concave lens diverges parallel rays."],
+["The SI unit of power of a lens is:",["Dioptre","Metre","Newton","Watt"],0,"Lens power is measured in dioptres (D)."],
+["A plane mirror forms an image that is:",["Virtual","Always real","Always inverted","Smaller only"],0,"A plane mirror forms a virtual, erect image."],
+["Refractive index is related to:",["Speed of light in media","Mass only","Temperature only","Pressure only"],0,"Refractive index depends on the speed of light in the medium."],
+["A ray bends when it passes from one medium to another due to:",["Refraction","Reflection only","Absorption","Heating"],0,"The change in speed causes refraction."],
+["The focal length of a lens is measured in:",["Metre","Newton","Joule","Watt"],0,"The SI unit of focal length is metre."],
+["A glass slab causes the emergent ray to be generally:",["Parallel to incident ray","Perpendicular always","Absent","Curved"],0,"For a parallel-sided glass slab, the emergent ray is parallel to the incident ray."]
+]
+
+},
+
+
+English:{
+
+"Grammar":[
+["Choose the correct sentence:",["He go to school.","He goes to school.","He going school.","He gone school."],1,"With 'He', the simple present verb takes -s."],
+["The plural of 'child' is:",["Childs","Children","Childes","Childrens"],1,"The correct plural is children."],
+["Choose the correct article: ___ apple",["A","An","The only","No article"],1,"'An' is used before the vowel sound in apple."],
+["Past tense of 'go' is:",["Goed","Went","Gone","Going"],1,"The simple past of go is went."],
+["A word used in place of a noun is called:",["Pronoun","Adjective","Adverb","Verb"],0,"A pronoun replaces a noun."],
+["'Quickly' is an:",["Noun","Adjective","Adverb","Pronoun"],2,"Quickly describes how an action is performed."],
+["Opposite of 'ancient' is:",["Old","Modern","Past","Historic"],1,"Modern is the opposite of ancient."],
+["Synonym of 'happy' is:",["Sad","Joyful","Angry","Weak"],1,"Joyful means happy."],
+["A sentence ending with a question mark is:",["Assertive","Interrogative","Imperative","Exclamatory"],1,"An interrogative sentence asks a question."],
+["'Honesty is the best policy' is a:",["Question","Statement","Command","Exclamation"],1,"It is a statement expressing an idea."]
+],
+
+"Reading Comprehension":[
+["The main idea of a passage means:",["Central idea","Small detail","Title only","Last word"],0,"The main idea is the central point of the passage."],
+["A synonym means:",["Similar meaning","Opposite meaning","Pronunciation","Spelling"],0,"A synonym has a similar meaning."],
+["An antonym means:",["Similar meaning","Opposite meaning","Same spelling","Same sound"],1,"An antonym has the opposite meaning."],
+["A fact is something that:",["Can be verified","Is always an opinion","Is imaginary","Cannot be checked"],0,"A fact can be checked or verified."],
+["An inference is:",["A conclusion based on clues","A title","A spelling mistake","A direct quotation"],0,"An inference is a conclusion drawn from available information."],
+["The title of a passage often tells us its:",["Topic","Author's age","Page number","Length only"],0,"A title generally indicates the topic or central idea."],
+["While reading, keywords help us to:",["Find important information","Ignore the passage","Change the topic","Count words"],0,"Keywords point to important information."],
+["A summary should be:",["Brief and complete","Very long","Unrelated","Only one word"],0,"A good summary briefly presents the main points."],
+["The tone of a passage means the writer's:",["Attitude","Age","Address","Name"],0,"Tone refers to the writer's attitude or feeling."],
+["Context helps us understand:",["Meaning in a situation","Only spelling","Only grammar","Page number"],0,"Context helps determine meaning from surrounding information."]
+],
+
+"Writing Skills":[
+["A notice should be:",["Clear and concise","Very long","Unclear","Informal only"],0,"A notice gives important information briefly and clearly."],
+["A notice usually contains:",["Heading","Only signature","Only date","Only address"],0,"A proper notice generally has a heading along with other details."],
+["A message should be:",["Brief and clear","Very long","Unrelated","Poetic only"],0,"A message communicates important information briefly."],
+["A formal letter should use:",["Formal language","Slang","Only emojis","Casual language"],0,"Formal letters require polite and formal language."],
+["The subject of a letter tells the:",["Main purpose","Writer's age","Page number","Signature"],0,"The subject briefly states the purpose of the letter."],
+["A report mainly presents:",["Information about an event","A personal diary","A joke","A poem"],0,"A report gives factual information about an event or situation."],
+["An application is generally written to:",["Request something formally","Tell a joke","Write a story","Describe a holiday"],0,"Applications are formal requests."],
+["A diary entry usually expresses:",["Personal thoughts and feelings","Official rules","News only","Advertisement"],0,"Diary entries commonly record personal thoughts and experiences."],
+["A speech is meant to be:",["Delivered to an audience","Only printed","Hidden","Sent as a bill"],0,"A speech is prepared for delivery before an audience."],
+["Good writing should be:",["Clear and organized","Confusing","Random","Unrelated"],0,"Clear organization makes writing easier to understand."]
+]
+
+},
+
+
+"Social Science":{
+
+"Development":[
+["Development generally means:",["Improvement in quality of life","Only earning money","Only building roads","Only population growth"],0,"Development is broader than income and includes quality of life."],
+["Per capita income means:",["Income per person","Total population","Total income only","Government income"],0,"Per capita income is average income per person."],
+["HDI stands for:",["Human Development Index","High Development Income","Human Data Index","Health Development India"],0,"HDI means Human Development Index."],
+["Education is an important indicator of:",["Development","Weather","Population only","Trade only"],0,"Education is an important measure of human development."],
+["Health is important for:",["Quality of life","Only trade","Only transport","Only industry"],0,"Good health is an important part of development."],
+["Different people may have:",["Different development goals","Same goals always","No goals","Only financial goals"],0,"Development goals vary among people."],
+["Income is used to compare:",["Material standard of living","Only health","Only education","Only climate"],0,"Income is one important measure of material well-being."],
+["Sustainable development considers:",["Future generations","Only present needs","Only factories","Only cities"],0,"Sustainable development protects resources for future generations."],
+["Public facilities include:",["Schools and hospitals","Only cars","Only shops","Only houses"],0,"Public facilities such as schools and hospitals support quality of life."],
+["Development should be:",["Inclusive and sustainable","Only profitable","Only industrial","Only urban"],0,"Good development should benefit people while protecting future resources."]
+],
+
+"Sectors of Economy":[
+["The primary sector is related to:",["Natural resources","Factories","Banking","Teaching"],0,"Primary activities use natural resources directly."],
+["Agriculture belongs to:",["Primary sector","Secondary sector","Tertiary sector","None"],0,"Agriculture is a primary activity."],
+["Manufacturing belongs to:",["Primary sector","Secondary sector","Tertiary sector","None"],1,"Manufacturing converts raw materials into products."],
+["Banking belongs to:",["Primary","Secondary","Tertiary","Agricultural"],2,"Banking provides services and belongs to the tertiary sector."],
+["The tertiary sector is also called:",["Service sector","Agricultural sector","Industrial sector","Primary sector"],0,"The tertiary sector provides services."],
+["GDP measures:",["Value of final goods and services","Population only","Imports only","Exports only"],0,"GDP is the value of final goods and services produced."],
+["Disguised unemployment is common in:",["Agriculture","Banking","IT only","Factories only"],0,"It can occur when more people work on a farm than are actually needed."],
+["Organised sector generally follows:",["Government rules and regulations","No rules","Only family rules","No working hours"],0,"Organised sector workplaces generally follow formal rules."],
+["Unorganised sector generally has:",["Less job security","High security always","Government jobs only","Fixed pensions always"],0,"Workers often have less job security and fewer benefits."],
+["A government hospital provides:",["Services","Manufactured goods","Crops","Raw materials"],0,"Healthcare is a service, so it belongs to the tertiary sector."]
+],
+
+"Power Sharing":[
+["Power sharing is desirable because it:",["Reduces conflict","Increases conflict","Stops democracy","Ends elections"],0,"Power sharing helps reduce social conflict."],
+["Belgium adopted a system of:",["Power sharing","Military rule","Monarchy only","Dictatorship"],0,"Belgium accommodated different communities through power sharing."],
+["Sri Lanka followed:",["Majoritarian policies","Complete power sharing","Military rule","No government"],0,"Majoritarian policies created tensions among communities."],
+["Horizontal power sharing is among:",["Different organs of government","Different villages","Countries","Families"],0,"It refers to legislature, executive and judiciary."],
+["Vertical power sharing is among:",["Different levels of government","Different courts only","Political parties only","Citizens only"],0,"It involves central, state and local levels."],
+["Power sharing is a feature of:",["Democracy","Dictatorship","Monarchy only","Military rule"],0,"Democracy encourages sharing of power."],
+["Community government is associated with:",["Belgium","Sri Lanka only","India only","France"],0,"Belgium has community governments based on language communities."],
+["The legislature makes:",["Laws","Judgements","Weather","Crops"],0,"The legislature is responsible for making laws."],
+["The judiciary mainly:",["Interprets laws","Makes crops","Runs banks","Prints money only"],0,"The judiciary interprets laws and resolves disputes."],
+["Power sharing helps maintain:",["Political stability","Conflict only","Inequality only","Dictatorship"],0,"Sharing power can promote stability and cooperation."]
+],
+
+"Resources and Development":[
+["A resource is something that has:",["Utility and value","No use","Only colour","Only weight"],0,"Resources have utility and value."],
+["Resources obtained from nature are:",["Natural resources","Human resources","Capital resources","None"],0,"Natural resources come from nature."],
+["Soil is a:",["Natural resource","Human resource","Manufactured resource","None"],0,"Soil occurs naturally and supports life and agriculture."],
+["Black soil is suitable for:",["Cotton","Tea only","Rice only","Jute only"],0,"Black soil is especially suitable for cotton."],
+["Alluvial soil is widely found in:",["Northern plains","Deserts only","Mountains only","Islands only"],0,"Alluvial soil is widespread in the northern plains."],
+["Resource planning helps in:",["Sustainable use of resources","Wasting resources","Increasing pollution","Stopping agriculture"],0,"Planning helps conserve and use resources wisely."],
+["Land degradation can be caused by:",["Deforestation","Afforestation","Rainwater harvesting","Soil conservation"],0,"Deforestation can contribute to land degradation."],
+["Contour ploughing helps prevent:",["Soil erosion","Rainfall","Photosynthesis","Mining"],0,"Contour ploughing reduces soil erosion on slopes."],
+["Terrace farming is common in:",["Hilly areas","Deserts only","Coastal plains only","Cities"],0,"Terraces help control water flow and soil erosion on slopes."],
+["Afforestation means:",["Planting trees","Cutting trees","Mining","Building roads"],0,"Afforestation means planting trees on a large scale."]
+],
+
+"Nationalism in India":[
+["The Non-Cooperation Movement was launched in:",["1920","1930","1942","1915"],0,"Gandhi launched the Non-Cooperation Movement in 1920."],
+["The Civil Disobedience Movement began with:",["Dandi March","Quit India","Champaran","Khilafat only"],0,"The Civil Disobedience Movement began with the Salt March to Dandi."],
+["The Salt March took place in:",["1930","1920","1942","1919"],0,"The Dandi March began in 1930."],
+["The Rowlatt Act was passed in:",["1919","1920","1930","1942"],0,"The Rowlatt Act was passed in 1919."],
+["The Jallianwala Bagh incident occurred in:",["1919","1920","1930","1942"],0,"The Jallianwala Bagh massacre occurred in 1919."],
+["The Quit India Movement was launched in:",["1942","1930","1920","1919"],0,"The Quit India Movement began in 1942."],
+["Mahatma Gandhi returned to India in:",["1915","1919","1920","1930"],0,"Gandhi returned to India from South Africa in 1915."],
+["The symbol of the spinning wheel represented:",["Swadeshi and self-reliance","British rule","War","Industrialisation only"],0,"The charkha became a symbol of self-reliance and Swadeshi."],
+["Satyagraha means:",["Truth and non-violent resistance","Violence","War","Tax collection"],0,"Satyagraha is based on truth and non-violent resistance."],
+["The Indian National Congress was formed in:",["1885","1905","1919","1942"],0,"The Indian National Congress was founded in 1885."]
+]
+
+}
+
+};
+
+
+/* =====================================================
+   QUIZ VARIABLES
+===================================================== */
+
+let currentQuestions=[];
+let currentQuestion=0;
+let score=0;
+let wrong=0;
+let timer=30;
+let timerInterval;
+
+
+/* =====================================================
+   SUBJECT → CHAPTER LIST
+===================================================== */
+
+const subjectSelect=document.getElementById("subjectSelect");
+const chapterSelect=document.getElementById("chapterSelect");
+
+subjectSelect.addEventListener("change",function(){
+
+    chapterSelect.innerHTML='<option value="">Choose Chapter</option>';
+
+    const subject=this.value;
+
+    if(!subject || !data[subject]) return;
+
+    Object.keys(data[subject]).forEach(chapter=>{
+
+        const option=document.createElement("option");
+
+        option.value=chapter;
+        option.textContent=chapter;
+
+        chapterSelect.appendChild(option);
+
+    });
+
+});
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+function startQuiz(){
+
+    const subject=subjectSelect.value;
+    const chapter=chapterSelect.value;
+
+    if(!subject || !chapter){
+
+        alert("Please select a subject and chapter.");
+
+        return;
+    }
+
+    currentQuestions=[...data[subject][chapter]];
+
+    // Random question order
+    currentQuestions.sort(()=>Math.random()-0.5);
+
+    currentQuestion=0;
+    score=0;
+    wrong=0;
+
+    document.getElementById("startScreen").classList.add("hidden");
+    document.getElementById("resultScreen").classList.add("hidden");
+    document.getElementById("quizScreen").classList.remove("hidden");
+
+    document.getElementById("chapterTitle").textContent=
+        subject+" • "+chapter;
+
+    showQuestion();
+}
+
+
+/* =====================================================
+   SHOW QUESTION
+===================================================== */
+
+function showQuestion(){
+
+    clearInterval(timerInterval);
+
+    timer=30;
+
+    document.getElementById("timer").textContent=timer;
+
+    const q=currentQuestions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent=
+        "Question "+(currentQuestion+1)+" of "+currentQuestions.length;
+
+    document.getElementById("question").textContent=q[0];
+
+    const optionsDiv=document.getElementById("options");
+
+    optionsDiv.innerHTML="";
+
+    document.getElementById("explanation").classList.add("hidden");
+
+    document.getElementById("nextBtn").classList.add("hidden");
+
+    q[1].forEach((option,index)=>{
+
+        const button=document.createElement("button");
+
+        button.className="option";
+
+        button.textContent=
+            String.fromCharCode(65+index)+". "+option;
+
+        button.onclick=()=>selectAnswer(index);
+
+        optionsDiv.appendChild(button);
+
+    });
+
+    updateProgress();
+
+    startTimer();
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer(){
+
+    timerInterval=setInterval(()=>{
+
+        timer--;
+
+        document.getElementById("timer").textContent=timer;
+
+        if(timer<=0){
+
+            clearInterval(timerInterval);
+
+            selectAnswer(-1);
+
+        }
+
+    },1000);
+
+}
+
+
+/* =====================================================
+   SELECT ANSWER
+===================================================== */
+
+function selectAnswer(selected){
+
+    clearInterval(timerInterval);
+
+    const q=currentQuestions[currentQuestion];
+
+    const buttons=document.querySelectorAll(".option");
+
+    buttons.forEach((button,index)=>{
+
+        button.disabled=true;
+
+        if(index===q[2]){
+
+            button.classList.add("correct");
+
+        }
+
+        if(index===selected && selected!==q[2]){
+
+            button.classList.add("wrong");
+
+        }
+
+    });
+
+    if(selected===q[2]){
+
+        score++;
+
+    }else{
+
+        wrong++;
+
+    }
+
+    const explanation=document.getElementById("explanation");
+
+    explanation.textContent="💡 "+q[3];
+
+    explanation.classList.remove("hidden");
+
+    const nextBtn=document.getElementById("nextBtn");
+
+    nextBtn.classList.remove("hidden");
+
+    if(currentQuestion===currentQuestions.length-1){
+
+        nextBtn.textContent="Show Result 🎯";
+
+    }else{
+
+        nextBtn.textContent="Next →";
+
+    }
+
+}
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    if(currentQuestion>=currentQuestions.length){
+
+        showResult();
+
+        return;
+
+    }
+
+    showQuestion();
+
+}
+
+
+/* =====================================================
+   PROGRESS BAR
+===================================================== */
+
+function updateProgress(){
+
+    const percent=
+        (currentQuestion/currentQuestions.length)*100;
+
+    document.getElementById("progressBar").style.width=
+        percent+"%";
+
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+function showResult(){
+
+    clearInterval(timerInterval);
+
+    document.getElementById("quizScreen").classList.add("hidden");
+
+    document.getElementById("resultScreen").classList.remove("hidden");
+
+    const total=currentQuestions.length;
+
+    const percentage=Math.round((score/total)*100);
+
+    document.getElementById("score").textContent=
+        percentage+"%";
+
+    document.getElementById("correctCount").textContent=
+        score;
+
+    document.getElementById("wrongCount").textContent=
+        wrong;
+
+    document.getElementById("totalCount").textContent=
+        total;
+
+    let message="";
+
+    if(percentage>=90){
+
+        message="🔥 Excellent! You're doing great!";
+
+    }else if(percentage>=70){
+
+        message="👏 Very good! Keep practising.";
+
+    }else if(percentage>=50){
+
+        message="👍 Good attempt. A little more practice will help.";
+
+    }else{
+
+        message="💪 Don't give up! Revise the chapter and try again.";
+
+    }
+
+    document.getElementById("message").textContent=message;
+
+}
+
+</script>
+
+</body>
+</html>
+```
