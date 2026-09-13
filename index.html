@@ -282,6 +282,7 @@ button:hover{
 
     <select id="subjectSelect">
         <option value="">Choose Subject</option>
+        <option value="Competitive">🧠 Competitive Level</option>
         <option value="Mathematics">Mathematics</option>
         <option value="Science">Science</option>
         <option value="English">English</option>
@@ -413,7 +414,245 @@ button:hover{
    Each question:
    [Question, [Option1, Option2, Option3, Option4], CorrectAnswerIndex, Explanation]
 ===================================================== */
+const competitiveQuestions = [
 
+/* ================= BIOLOGY — 25 ================= */
+
+["A plant cell is placed in a hypertonic solution. What is most likely to occur?",
+["Water leaves the cell","Water enters the cell","Solute leaves the cell","Cell wall dissolves"],0],
+
+["Which statement about enzymes is correct?",
+["They are consumed during the reaction","They increase activation energy","They are generally specific in their action","They work equally well at every temperature"],2],
+
+["During meiosis, crossing over occurs during:",
+["Metaphase I","Prophase II","Metaphase II","Prophase I"],3],
+
+["A human somatic cell contains 46 chromosomes. The number of chromosomes in a normal ovum is:",
+["23","46","92","44"],0],
+
+["A heterozygous tall pea plant is crossed with a dwarf plant. What will be the expected phenotypic ratio?",
+["3 : 1","1 : 1","1 : 2 : 1","100% tall"],1],
+
+["Which RNA molecule carries amino acids to the ribosome?",
+["mRNA","tRNA","rRNA","miRNA"],1],
+
+["The process of formation of mRNA from DNA is called:",
+["Translation","Translocation","Transcription","Replication"],2],
+
+["If the DNA template strand contains TAC, the corresponding mRNA codon is:",
+["ATG","TAC","UAC","AUG"],3],
+
+["Ultrafiltration of blood in the nephron takes place mainly in the:",
+["Glomerulus","Loop of Henle","Collecting duct","Distal convoluted tubule"],0],
+
+["ADH primarily increases:",
+["Glucose absorption","Protein digestion","Urea production","Water reabsorption"],3],
+
+["If ADH secretion decreases considerably, the urine will generally become:",
+["More concentrated and less in volume","More dilute and greater in volume","Completely free of urea","Rich in proteins"],1],
+
+["Which hormone increases blood glucose concentration?",
+["Glucagon","Insulin","ADH","Thyroxine"],0],
+
+["A reflex action is primarily coordinated by the:",
+["Cerebrum","Cerebellum","Spinal cord","Hypothalamus"],2],
+
+["The structure that prevents food from entering the trachea during swallowing is:",
+["Larynx","Diaphragm","Bronchus","Epiglottis"],3],
+
+["The oxygen released during photosynthesis comes mainly from:",
+["Water","Carbon dioxide","Glucose","Chlorophyll"],0],
+
+["Which condition would most directly reduce the rate of photosynthesis?",
+["Adequate light","Severe water deficiency","Increased CO₂ up to optimum","Suitable temperature"],1],
+
+["According to the 10% law, if producers contain 20,000 J of energy, approximately how much energy is available to primary consumers?",
+["20 J","200 J","2,000 J","10,000 J"],1],
+
+["Which ecological pyramid is always upright?",
+["Pyramid of numbers","Pyramid of biomass","All pyramids","Pyramid of energy"],3],
+
+["Antibiotics are generally ineffective against viruses because:",
+["Viruses lack many cellular structures targeted by antibiotics","Viruses are always larger than bacteria","Viruses cannot mutate","Viruses contain no genetic material"],0],
+
+["Which antibody is generally produced first during a primary immune response?",
+["IgA","IgE","IgM","IgG"],2],
+
+["Oxygenated blood from the lungs enters the:",
+["Right atrium","Left atrium","Right ventricle","Left ventricle"],1],
+
+["Which process converts atmospheric nitrogen into usable nitrogen compounds?",
+["Nitrogen fixation","Denitrification","Transpiration","Photosynthesis"],0],
+
+["The number of chromosomes in a normal human gamete is:",
+["46","44","22 pairs","23"],3],
+
+["The process by which RNA is formed using DNA as a template is:",
+["Translation","Transcription","Replication","Mutation"],1],
+
+["A population becomes better adapted over generations mainly because:",
+["Organisms consciously change themselves","All organisms mutate in the same direction","Useful inherited variations are selected over generations","Acquired characters are always inherited"],2],
+
+
+/* ================= CHEMISTRY — 25 ================= */
+
+["An atom has atomic number 17 and mass number 35. The number of neutrons is:",
+["17","35","52","18"],3],
+
+["Which pair represents isotopes?",
+["¹²C and ¹⁴C","¹⁴C and ¹⁴N","²³Na and ²⁴Mg","³⁵Cl and ³⁷Ar"],0],
+
+["Which quantum number determines the shape of an orbital?",
+["Principal quantum number","Magnetic quantum number","Azimuthal quantum number","Spin quantum number"],2],
+
+["According to the Aufbau principle, which orbital is filled before 3d?",
+["4p","4s","3d","5s"],1],
+
+["The electronic configuration of Na⁺ is:",
+["2,8","2,8,1","2,7","2,8,8"],0],
+
+["Which element has the highest first ionisation energy?",
+["Na","Ne","Mg","Al"],1],
+
+["Across a period, atomic radius generally decreases because:",
+["Number of shells decreases","Number of protons decreases","Nuclear charge increases while electrons enter the same shell","Electrons move into higher shells"],2],
+
+["Which molecule has a linear geometry?",
+["NH₃","H₂O","CH₄","CO₂"],3],
+
+["The hybridisation of carbon atoms in ethene is:",
+["sp²","sp","sp³","dsp²"],0],
+
+["A pi bond is formed by:",
+["Transfer of electrons","Complete loss of electrons","Sideways overlap of orbitals","Head-on overlap of orbitals"],2],
+
+["The oxidation state of sulphur in H₂SO₄ is:",
+["+2","+4","-2","+6"],3],
+
+["Which of the following is a disproportionation reaction?",
+["Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O","HCl + NaOH → NaCl + H₂O","Zn + CuSO₄ → ZnSO₄ + Cu","CaCO₃ → CaO + CO₂"],0],
+
+["For an endothermic reaction, increasing temperature generally shifts equilibrium toward:",
+["Reactants","Products","Neither side","Catalyst"],1],
+
+["A catalyst changes the:",
+["Equilibrium constant","Enthalpy change","Activation energy","Gibbs energy of reaction"],2],
+
+["The pH of a strong acid solution generally increases when:",
+["More acid is added","The solution is diluted","More H⁺ ions are added","Water is removed"],1],
+
+["Which substance has strong hydrogen bonding between its molecules?",
+["H₂O","CH₄","CO₂","CCl₄"],0],
+
+["Which compound gives a positive Tollens' test?",
+["Ethane","Ethene","Ethanal","Ethanol"],2],
+
+["Oxidation of ethanol can ultimately produce:",
+["Methane","Ethanoic acid","Ethyne","Propane"],1],
+
+["Which of the following is a secondary alcohol?",
+["Propan-2-ol","Methanol","Ethanol","2-methylpropan-2-ol"],0],
+
+["The monomer used to prepare PVC is:",
+["Ethene","Propene","Ethyne","Chloroethene"],3],
+
+["Which compound can show geometrical cis-trans isomerism?",
+["Ethane","But-2-ene","Methane","Propane"],1],
+
+["During electrolysis, reduction occurs at the:",
+["Anode","Salt bridge","Cathode","Electrolyte surface"],2],
+
+["During electrolysis of molten NaCl, the product at the cathode is:",
+["Na","Cl₂","H₂","O₂"],0],
+
+["Which of the following has the greatest number of particles in one mole?",
+["1 mole of He atoms","1 mole of H₂ molecules","1 mole of Na⁺ ions","All contain the same number of particles"],3],
+
+["Which statement about equilibrium is correct?",
+["Reactants and products must be present in equal amounts","Reaction stops completely","Forward and backward reaction rates become equal","Concentrations of all substances become zero"],2],
+
+
+/* ================= PHYSICS — 25 ================= */
+
+["A body travels equal distances with speeds v and 2v. Its average speed is:",
+["3v/2","v","2v","4v/3"],3],
+
+["A body starts from rest and accelerates at 4 m/s² for 5 seconds. Its final velocity is:",
+["20 m/s","10 m/s","15 m/s","25 m/s"],0],
+
+["A ball is thrown vertically upward. At the highest point:",
+["Velocity and acceleration are both zero","Velocity is upward and acceleration is zero","Both velocity and acceleration are upward","Velocity is zero but acceleration is downward"],3],
+
+["If the net external force on an object is zero, the object:",
+["Must be at rest","May be at rest or move with constant velocity","Must accelerate","Must move in a circle"],1],
+
+["A force of 20 N acts on a body of mass 4 kg. The acceleration is:",
+["5 m/s²","2 m/s²","10 m/s²","80 m/s²"],0],
+
+["A 5 kg object moves with velocity 4 m/s. Its kinetic energy is:",
+["10 J","40 J","20 J","80 J"],1],
+
+["If the velocity of a body is doubled, its kinetic energy becomes:",
+["Double","Half","Eight times","Four times"],3],
+
+["A satellite moving in a circular orbit around Earth is accelerating because:",
+["Its speed must continuously increase","Its mass changes","Its velocity continuously changes direction","Gravity is absent"],2],
+
+["Escape velocity from Earth is independent of:",
+["Mass of the escaping body","Earth's mass","Earth's radius","Gravitational constant"],0],
+
+["The work done by centripetal force in uniform circular motion is:",
+["Positive","Negative","Maximum","Zero"],3],
+
+["Two resistors of 6 Ω each are connected in parallel. Their equivalent resistance is:",
+["12 Ω","3 Ω","6 Ω","1.5 Ω"],1],
+
+["A 10 Ω resistor carries a current of 2 A. The potential difference across it is:",
+["20 V","5 V","10 V","40 V"],0],
+
+["A 1000 W appliance operates for 2 hours. The electrical energy consumed is:",
+["0.5 kWh","1 kWh","2000 kWh","2 kWh"],3],
+
+["In a series circuit, the current through each resistor is:",
+["Same","Different","Zero","Infinite"],0],
+
+["In a parallel circuit, the potential difference across each branch is:",
+["Different","Always zero","Same","Infinite"],2],
+
+["A charged particle moving parallel to a uniform magnetic field experiences:",
+["Maximum magnetic force","Force in the direction of motion","Zero magnetic force","Infinite magnetic force"],2],
+
+["The magnetic force on a charged particle is maximum when the angle between velocity and magnetic field is:",
+["0°","90°","30°","60°"],1],
+
+["A transformer cannot operate using:",
+["AC","Alternating current","Changing magnetic flux","DC"],3],
+
+["In Young's double-slit experiment, fringe width increases when:",
+["Wavelength increases","Wavelength decreases","Slit separation increases","Screen distance decreases"],0],
+
+["The photoelectric effect provides strong evidence for:",
+["Wave nature of matter","Nuclear nature of light","Particle nature of light","Sound nature of light"],2],
+
+["If incident light has a frequency below the threshold frequency of a metal:",
+["Photoelectrons are emitted with low energy","No photoelectric emission occurs","Photoelectrons are emitted after increasing intensity","Emission occurs after increasing exposure time"],1],
+
+["According to de Broglie's hypothesis, the wavelength of a particle is:",
+["Directly proportional to momentum","Independent of momentum","Equal to momentum","Inversely proportional to momentum"],3],
+
+["In nuclear fission:",
+["A heavy nucleus splits into smaller nuclei","Two light nuclei combine","Electrons combine to form a nucleus","Atoms form molecules"],0],
+
+["A radioactive substance has a half-life of 10 days. What fraction remains after 30 days?",
+["1/2","1/4","1/8","1/16"],2],
+
+["An n-type semiconductor is produced by doping pure silicon with:",
+["Trivalent impurity","Divalent impurity","Monovalent impurity","Pentavalent impurity"],3]
+
+];
+
+// Shuffle questions every time Competitive Level is opened
+competitiveQuestions.sort(() => Math.random() - 0.5);
 const data = {
 
 Mathematics: {
@@ -782,64 +1021,75 @@ let timerInterval;
 
 const subjectSelect=document.getElementById("subjectSelect");
 const chapterSelect=document.getElementById("chapterSelect");
+subjectSelect.addEventListener("change", function () {
 
-subjectSelect.addEventListener("change",function(){
+    const subject = this.value;
 
-    chapterSelect.innerHTML='<option value="">Choose Chapter</option>';
+    chapterSelect.innerHTML = '<option value="">Choose Chapter</option>';
 
-    const subject=this.value;
+    if (subject === "Competitive") {
 
-    if(!subject || !data[subject]) return;
+        chapterSelect.innerHTML =
+            '<option value="Science">Science</option>';
 
-    Object.keys(data[subject]).forEach(chapter=>{
+    } else if (subject && data[subject]) {
 
-        const option=document.createElement("option");
+        Object.keys(data[subject]).forEach(chapter => {
 
-        option.value=chapter;
-        option.textContent=chapter;
+            const option = document.createElement("option");
 
-        chapterSelect.appendChild(option);
+            option.value = chapter;
+            option.textContent = chapter;
 
-    });
+            chapterSelect.appendChild(option);
+
+        });
+
+    }
 
 });
+
 
 
 /* =====================================================
    START QUIZ
 ===================================================== */
-
 function startQuiz(){
 
-    const subject=subjectSelect.value;
-    const chapter=chapterSelect.value;
+    const subject = subjectSelect.value;
+    const chapter = chapterSelect.value;
 
     if(!subject || !chapter){
-
         alert("Please select a subject and chapter.");
-
         return;
     }
 
-    currentQuestions=[...data[subject][chapter]];
+    if(subject === "Competitive"){
+
+        currentQuestions = [...competitiveQuestions];
+
+        chapterTitle.textContent = "Competitive Science";
+
+    } else {
+
+        currentQuestions = [...data[subject][chapter]];
+
+        chapterTitle.textContent = chapter;
+    }
 
     // Random question order
-    currentQuestions.sort(()=>Math.random()-0.5);
+    currentQuestions.sort(() => Math.random() - 0.5);
 
-    currentQuestion=0;
-    score=0;
-    wrong=0;
+    currentQuestion = 0;
+    score = 0;
+    wrong = 0;
 
     document.getElementById("startScreen").classList.add("hidden");
     document.getElementById("resultScreen").classList.add("hidden");
     document.getElementById("quizScreen").classList.remove("hidden");
 
-    document.getElementById("chapterTitle").textContent=
-        subject+" • "+chapter;
-
     showQuestion();
 }
-
 
 /* =====================================================
    SHOW QUESTION
